@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "287114338671",
+    "firebase_url": "https://addressbook-afd23.firebaseio.com",
+    "project_id": "addressbook-afd23",
+    "storage_bucket": "addressbook-afd23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287114338671:android:eeb4ffa0a7c0a2cebd489a",
+        "android_client_info": {
+          "package_name": "com.example.addressbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287114338671-idarrnjtbstq5arj85lhst8b3oktvopd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.addressbook",
+            "certificate_hash": "0bcec64a1858779e814c8aec996e54959510ca07"
+          }
+        },
+        {
+          "client_id": "287114338671-73oiqsieh2sdvsjgu27cma9n43rrs03a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvUkwuhhnwqybm9j2YUgyV24Q6R1W33QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287114338671-73oiqsieh2sdvsjgu27cma9n43rrs03a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
