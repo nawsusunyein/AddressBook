@@ -1,64 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorAccent"
-    tools:context=".WriteAddress"
-    >
-    <EditText
-        android:id="@+id/txtPersonName"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:hint="Enter Person Name"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textCursorDrawable="@drawable/color_cursor"
-        />
-    <EditText
-        android:id="@+id/txtPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:hint="Enter Phone Number"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textCursorDrawable="@drawable/color_cursor"
-        />
-    <EditText
-        android:id="@+id/txtAddress"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:hint="Enter Address"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textCursorDrawable="@drawable/color_cursor"
-        />
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorAccent"
+        tools:context=".WriteAddress"
         >
-        <Button
-            android:id="@+id/btnAddAddress"
-            android:layout_width="120dp"
-            android:layout_height="55dp"
-            android:text="Save"
-            android:layout_marginRight="8dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@android:color/white"
+        <EditText
+            android:id="@+id/txtPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Enter Person Name"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/color_cursor"
             />
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="120dp"
-            android:layout_height="55dp"
-            android:text="Cancel"
-            android:background="@color/colorPrimary"
-            android:textColor="@android:color/white"
+        <EditText
+            android:id="@+id/txtPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Enter Phone Number"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/color_cursor"
+            />
+        <EditText
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Enter Address"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/color_cursor"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/btnAddAddress"
+                android:layout_width="120dp"
+                android:layout_height="55dp"
+                android:text="Save"
+                android:layout_marginRight="8dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                />
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="120dp"
+                android:layout_height="55dp"
+                android:text="Cancel"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                />
+
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/colorPrimary"
+            android:visibility="gone"
+            android:layout_gravity="center"
             />
     </LinearLayout>
-</LinearLayout>
+
