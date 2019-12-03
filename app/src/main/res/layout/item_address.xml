@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    >
+   <ImageView
+       android:id="@+id/iconUser"
+       android:src="@drawable/user"
+       android:layout_width="35dp"
+       android:layout_height="35dp"
+       />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/iconUser"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/iconUser"
+        android:layout_toRightOf="@+id/iconUser"
+        android:text="Su Su"
+        android:gravity="center"
+        android:padding="8dp"
+        />
+
+    <ImageView
+        android:id="@+id/iconPhone"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/iconUser"
+        android:src="@drawable/phone" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/txtName"
+        android:layout_toEndOf="@+id/iconPhone"
+        android:layout_toRightOf="@+id/iconPhone"
+        android:text="242343243243"
+        android:gravity="center"
+        android:padding="8dp"
+        />
+    <ImageView
+        android:id="@+id/iconHome"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/home"
+        android:layout_below="@+id/iconPhone"
+        />
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Yangon"
+        android:layout_toEndOf="@+id/iconHome"
+        android:layout_below="@+id/txtPhone"
+        android:gravity="center"
+        android:padding="8dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/iconHome"
+        />
+</RelativeLayout>
