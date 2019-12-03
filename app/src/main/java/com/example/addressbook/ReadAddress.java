@@ -38,7 +38,8 @@ public class ReadAddress extends AppCompatActivity {
                     String name = ds.child("name").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
                     String address = ds.child("address").getValue(String.class);
-                    Address addr = new Address(name,phone,address);
+                    String id = ds.getKey();
+                    Address addr = new Address(name,phone,address,id);
                     addressList.add(addr);
                 }
                 showAddressValues();
@@ -51,9 +52,6 @@ public class ReadAddress extends AppCompatActivity {
             }
         };
         mDatabase.addValueEventListener(valueEventListener);
-        //showAddressValues();
-
-
     }
 
     private void showAddressValues(){

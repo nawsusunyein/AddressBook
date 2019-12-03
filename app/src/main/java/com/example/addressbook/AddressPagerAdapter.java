@@ -1,6 +1,7 @@
 package com.example.addressbook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,22 @@ public class AddressPagerAdapter extends RecyclerView.Adapter<AddressViewHolder>
         holder.txtUserName.setText(addressList.get(position).getName());
         holder.txtAddress.setText(addressList.get(position).getAddress());
         holder.txtPhone.setText(addressList.get(position).getPhone());
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent writeIntent = new Intent(context,WriteAddress.class);
+                writeIntent.putExtra("name",addressList.get(pos).getName());
+                writeIntent.putExtra("address",addressList.get(pos).getAddress());
+                writeIntent.putExtra("phone",addressList.get(pos).getPhone());
+                writeIntent.putExtra("id",addressList.get(pos).getId());
+                context.startActivity(writeIntent);
+            }
+
+            @Override
+            public void onItemLongClick(View v, int pos) {
+
+            }
+        });
     }
 
     @Override

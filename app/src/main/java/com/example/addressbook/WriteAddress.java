@@ -3,6 +3,7 @@ package com.example.addressbook;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +17,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.io.Console;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WriteAddress extends AppCompatActivity {
 
@@ -31,6 +35,8 @@ public class WriteAddress extends AppCompatActivity {
     ProgressBar progressBar;
 
     private DatabaseReference mDatabase;
+    private String name,phone,address,id;
+    private Boolean isUpdate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,12 @@ public class WriteAddress extends AppCompatActivity {
         btnSaveAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addUserValue();
+
+                if(isUpdate){
+                    updateUserValues();
+                }else{
+                    addUserValue();
+                }
             }
         });
 
@@ -53,12 +64,32 @@ public class WriteAddress extends AppCompatActivity {
                 clearTextValues();
             }
         });
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            Intent updateIntent = getIntent();
+            name = updateIntent.getExtras().getString("name");
+            phone = updateIntent.getExtras().getString("phone");
+            address = updateIntent.getExtras().getString("address");
+            id = updateIntent.getExtras().getString("id");
+            setAddressValues();
+            isUpdate = true;
+        }else{
+            isUpdate = false;
+        }
     }
 
     private void registerTextfieldsById(){
         txtPersonName = (EditText) findViewById(R.id.txtPersonName);
         txtPhoneNumber = (EditText) findViewById(R.id.txtPhoneNumber);
         txtAddress = (EditText) findViewById(R.id.txtAddress);
+    }
+
+    private void setAddressValues(){
+        registerTextfieldsById();
+        txtPersonName.setText(name);
+        txtPhoneNumber.setText(phone);
+        txtAddress.setText(address);
     }
 
     private void addUserValue(){
@@ -107,5 +138,36 @@ public class WriteAddress extends AppCompatActivity {
         txtPersonName.setText("");
         txtPhoneNumber.setText("");
         txtAddress.setText("");
+    }
+
+    private void updateUserValues(){
+        registerTextfieldsById();
+        progressBar.setVisibility(View.VISIBLE);
+        String name = txtPersonName.getText().toString();
+        String address = txtAddress.getText().toString();
+        String phone = txtPhoneNumber.getText().toString();
+        Address addr1 = new Address(name,phone,address);
+        Map<String,Object> addressHashMap = new HashMap<>();
+
+        if(!(addr1.getName().isEmpty()) && !(addr1.getPhone().isEmpty()) && !(addr1.getAddress().isEmpty())){
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference().child("Address");
+            ref.child(id).setValue(addr1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(WriteAddress.this,"Update successfully",Toast.LENGTH_LONG).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(WriteAddress.this,"Update fails",Toast.LENGTH_LONG).show();
+                }
+            });
+        }else{
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(WriteAddress.this,"Fill all data",Toast.LENGTH_LONG).show();
+        }
     }
 }

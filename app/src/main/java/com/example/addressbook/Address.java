@@ -6,12 +6,21 @@ public class Address {
     String name;
     String phone;
     String address;
+    String id;
 
     public Address(){}
+
     public Address(String name,String phone,String address){
         this.name = name;
         this.phone = phone;
         this.address = address;
+    }
+
+    public Address(String name,String phone,String address,String id){
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.id = id;
     }
 
     public void setName(String name){
@@ -34,4 +43,7 @@ public class Address {
     public String getAddress(){
         return address;
     }
+
+    public void setId(String id){this.id = id;}
+    public String getId(){return id;}
 }
