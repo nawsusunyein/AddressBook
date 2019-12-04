@@ -33,6 +33,7 @@ public class AddressViewHolder extends RecyclerView.ViewHolder implements View.O
 
     @Override
     public boolean onLongClick(View v) {
+        int layoutPos = getLayoutPosition();
         this.itemClickListener.onItemLongClick(v,getLayoutPosition());
         return true;
     }

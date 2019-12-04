@@ -34,6 +34,7 @@ public class ReadAddress extends AppCompatActivity {
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                addressList.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     String name = ds.child("name").getValue(String.class);
                     String phone = ds.child("phone").getValue(String.class);
@@ -42,7 +43,11 @@ public class ReadAddress extends AppCompatActivity {
                     Address addr = new Address(name,phone,address,id);
                     addressList.add(addr);
                 }
-                showAddressValues();
+                recyclerAddressView = (RecyclerView) findViewById(R.id.recyclerAddressView);
+                AddressPagerAdapter addressPagerAdapter = new AddressPagerAdapter(addressList,getApplicationContext());
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReadAddress.this);
+                recyclerAddressView.setLayoutManager(layoutManager);
+                recyclerAddressView.setAdapter(addressPagerAdapter);
 
             }
 
