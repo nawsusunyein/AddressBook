@@ -66,10 +66,6 @@ public class AddressPagerAdapter extends RecyclerView.Adapter<AddressViewHolder>
                 ref.child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
-                       // addressList.remove(adapterIndex);
-                        //notifyItemRemoved(adapterIndex);
-                        //notifyItemRangeChanged(adapterIndex,addressList.size());
                         notifyDataSetChanged();
                         Toast.makeText(context,"Deleted successfully",Toast.LENGTH_LONG).show();
                     }
